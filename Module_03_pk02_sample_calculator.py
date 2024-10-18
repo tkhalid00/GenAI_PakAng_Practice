@@ -35,8 +35,8 @@ def calculator(num1, num2, operator):
 # Streamlit app
 st.title("Simple Calculator")
 
-num1 = st.number_input("Enter the first number", format="%f", step=None)
-num2 = st.number_input("Enter the second number", format="%f", step=None)
+num1 = st.number_input("Enter the first number", format="%.0f")
+num2 = st.number_input("Enter the second number", format="%.0f")
 
 operator = st.selectbox("Select an operator", ["Add", "Subtract", "Multiply", "Divide", "Integer Divide"])
 
