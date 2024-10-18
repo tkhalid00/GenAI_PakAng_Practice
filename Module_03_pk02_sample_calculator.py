@@ -7,23 +7,23 @@ def calculator(num1, num2, operator):
   Args:
     num1: The first operand.
     num2: The second operand.
-    operator: The operator to perform (+, -, *, /, //).
+    operator: The operator to perform (Add, Subtract, Multiply, Divide, Integer Divide).
 
   Returns:
     The result of the operation.
   """
 
-  if operator == '+':
+  if operator == "Add":
     result = num1 + num2
-  elif operator == '-':
+  elif operator == "Subtract":
     result = num1 - num2
-  elif operator == '*':
+  elif operator == "Multiply":
     result = num1 * num2
-  elif operator == '/':
+  elif operator == "Divide":
     if num2 == 0:
       raise ValueError("Cannot divide by zero.")
     result = num1 / num2
-  elif operator == '//':
+  elif operator == "Integer Divide":
     if num2 == 0:
       raise ValueError("Cannot divide by zero.")
     result = num1 // num2
@@ -38,7 +38,7 @@ st.title("Simple Calculator")
 num1 = st.number_input("Enter the first number", format="%f")
 num2 = st.number_input("Enter the second number", format="%f")
 
-operator = st.selectbox("Select an operator", ["+", "-", "*", "/", "//"])
+operator = st.selectbox("Select an operator", ["Add", "Subtract", "Multiply", "Divide", "Integer Divide"])
 
 if st.button("Calculate"):
   try:
