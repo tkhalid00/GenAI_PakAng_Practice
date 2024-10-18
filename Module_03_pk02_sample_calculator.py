@@ -7,7 +7,7 @@ def calculator(num1, num2, operator):
   Args:
     num1: The first operand.
     num2: The second operand.
-    operator: The operator to perform (+, -, *, /).
+    operator: The operator to perform (+, -, *, /, //).
 
   Returns:
     The result of the operation.
@@ -23,6 +23,10 @@ def calculator(num1, num2, operator):
     if num2 == 0:
       raise ValueError("Cannot divide by zero.")
     result = num1 / num2
+  elif operator == '//':
+    if num2 == 0:
+      raise ValueError("Cannot divide by zero.")
+    result = num1 // num2
   else:
     raise ValueError("Invalid operator.")
 
@@ -31,10 +35,10 @@ def calculator(num1, num2, operator):
 # Streamlit app
 st.title("Simple Calculator")
 
-num1 = st.number_input("Enter the first number")
-num2 = st.number_input("Enter the second number")
+num1 = st.number_input("Enter the first number", format="%f")
+num2 = st.number_input("Enter the second number", format="%f")
 
-operator = st.selectbox("Select an operator", ["+", "-", "*", "/"])
+operator = st.selectbox("Select an operator", ["+", "-", "*", "/", "//"])
 
 if st.button("Calculate"):
   try:
