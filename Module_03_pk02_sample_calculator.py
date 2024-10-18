@@ -1,48 +1,32 @@
 import streamlit as st
 
-def calculator(num1, num2, operator):
-  """
-  Performs basic arithmetic operations.
-
-  Args:
-    num1: The first operand.
-    num2: The second operand.
-    operator: The operator to perform (Add, Subtract, Multiply, Divide, Integer Divide).
-
-  Returns:
-    The result of the operation.
-  """
-
-  if operator == "Add":
-    result = num1 + num2
-  elif operator == "Subtract":
-    result = num1 - num2
-  elif operator == "Multiply":
-    result = num1 * num2
-  elif operator == "Divide":
-    if num2 == 0:
-      raise ValueError("Cannot divide by zero.")
-    result = num1 / num2
-  elif operator == "Integer Divide":
-    if num2 == 0:
-      raise ValueError("Cannot divide by zero.")
-    result = num1 // num2
-  else:
-    raise ValueError("Invalid operator.")
-
-  return result
-
-# Streamlit app
+# Streamlit App for a Simple Calculator
 st.title("Simple Calculator")
 
-num1 = st.number_input("Enter the first number", format="%.0f")
-num2 = st.number_input("Enter the second number", format="%.0f")
+# Select the operation
+operation = st.selectbox(
+    "Select an operation:",
+    ("Add", "Subtract", "Multiply", "Divide")
+)
 
-operator = st.selectbox("Select an operator", ["Add", "Subtract", "Multiply", "Divide", "Integer Divide"])
+# Input numbers from the user
+num1 = st.number_input("Enter the first number:", format="%.2f")
+num2 = st.number_input("Enter the second number:", format="%.2f")
 
+# Perform the calculation when the button is clicked
 if st.button("Calculate"):
-  try:
-    result = calculator(num1, num2, operator)
-    st.success(f"Result: {result}")
-  except ValueError as e:
-    st.error(str(e))
+    if operation == "Add":
+        result = num1 + num2
+        st.write(f"{num1} + {num2} = {result}")
+    elif operation == "Subtract":
+        result = num1 - num2
+        st.write(f"{num1} - {num2} = {result}")
+    elif operation == "Multiply":
+        result = num1 * num2
+        st.write(f"{num1} * {num2} = {result}")
+    elif operation == "Divide":
+        if num2 != 0:
+            result = num1 / num2
+            st.write(f"{num1} / {num2} = {result}")
+        else:
+            st.error("Error! Division by zero.")
